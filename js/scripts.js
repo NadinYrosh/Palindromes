@@ -7,19 +7,20 @@ $(document).ready(function() {
     var backWord = word.slice().reverse();
 
     console.log(word);
-
-    if (word.toString() === backWord.toString()) {
-      $(".output").append("This is a palindrome");
-    } else {
-      $(".output").append("This is not a palindrome");
-    }
     //
-    // for (var letter = 0; letter < word.length; letter++) {
-    //   if (word[letter] !== backWord[letter]) {
-    //     $(".output").append("This is not a palindrome");
-    //   }
+    // if (word.toString() === backWord.toString()) {
+    //   $(".output").append("This is a palindrome");
+    // } else {
+    //   $(".output").append("This is not a palindrome");
     // }
-    // $(".output").append("This is a palindrome");
+
+    var message = "This is a palindrome"
+    for (var letter = 0; letter < word.length; letter++) {
+      if (word[letter] !== backWord[letter]) {
+        message = "This is not a palindrome";
+      }
+    }
+    $(".output").text(message);
 
   });
 });
