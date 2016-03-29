@@ -1,22 +1,25 @@
 $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
+    $(".output").empty();
 
-    var sentence = $("#input").val().split("");
-    var vowels = ["a", "e", "i", "o", "u", "y"];
-    var newSentence = [];
-    for (var letter = 0; letter < sentence.length; letter++) {
-      for (var index = 0; index < vowels.length; index++) {
-        if (vowels[index] === sentence[letter]) {
-          newSentence.push("-");
-          letter++;
-        }
-      }
-      newSentence.push(sentence[letter]);
+    var word = $("#input").val().split("");
+    var backWord = word.slice().reverse();
+
+    console.log(word);
+
+    if (word.toString() === backWord.toString()) {
+      $(".output").append("This is a palindrome");
+    } else {
+      $(".output").append("This is not a palindrome");
     }
-    newSentence.join();
-    $("#input").hide();
-    $(".output").append(newSentence);
-    console.log(newSentence);
+    //
+    // for (var letter = 0; letter < word.length; letter++) {
+    //   if (word[letter] !== backWord[letter]) {
+    //     $(".output").append("This is not a palindrome");
+    //   }
+    // }
+    // $(".output").append("This is a palindrome");
+
   });
 });
